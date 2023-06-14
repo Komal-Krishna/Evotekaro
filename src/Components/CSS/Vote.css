@@ -1,0 +1,18 @@
+.a{
+  float: left;
+  position:fixed;
+  height: 900px ;
+  width: 250px;
+  float:left;
+  background-color: #222831;
+}
+.heading {
+  height: fit-content;
+  margin-top: 0%;
+  padding-top: 3%;
+}
+.b{
+  justify-content: center;
+  margin-left: 7%;
+
+}
