@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { getFID } from "web-vitals";
 import CreateElection from "./CreateElection";
 import "./CSS/Dashboard.css";
 import Sidebar from './Sidebar';
@@ -11,6 +10,14 @@ import Sidebar from './Sidebar';
 export const Dashboard = ({onFormSwitch,setElectionId}) => {
 
    const [d,setd] = useState([])
+   const current = new Date();
+   const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
+   const showTime = current.getHours()
+        + ':' + current.getMinutes()
+        + ":" + current.getSeconds();
+
+
+   
    
    useEffect(() => {
       fetch('http://localhost:8000/election', {
@@ -36,7 +43,12 @@ export const Dashboard = ({onFormSwitch,setElectionId}) => {
        });
    },[])
 
-     
+   {
+      console.log(date)
+      console.log(showTime);
+   }
+
+      
 
     return(
       <div className='A'>
@@ -45,10 +57,14 @@ export const Dashboard = ({onFormSwitch,setElectionId}) => {
         </div>
          <div className="v">
             <p className="heading"><center>E VOTEKARO</center></p>
+            
             <div className="cards">
             {
-            d.map((item) => (<CreateElection title={item.name} rule={item.rules} id={item.id} onFormSwitch={onFormSwitch} setElectionId={setElectionId} ></CreateElection>))
+            d.map((item) => 
+
+            (<CreateElection title={item.name} rule={item.rules}  onFormSwitch={onFormSwitch} setElectionId={setElectionId} ></CreateElection>))
             }
+            
             </div>
             
            

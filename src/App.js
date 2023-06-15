@@ -55,7 +55,7 @@ function App() {
     return <User onFormSwitch={toggleForm} ></User>
   }
   else if (currentForm === "Voting") {
-    return <Voting onFormSwitch={toggleForm} electionId={electionId} ></Voting>
+    return <Voting onFormSwitch={toggleForm} electionId={electionId}></Voting>
   }
 }
 
