@@ -13,6 +13,15 @@ export const Voting = ({electionId ,onFormSwitch}) => {
         setVote(true);
     }
 
+
+    useEffect(() => {
+            k.map((i) => {
+                if (i.name === electionId){
+                    setcan(i.candidates)
+
+                }
+            })
+       })
    
    
    useEffect(() => {
@@ -43,15 +52,7 @@ export const Voting = ({electionId ,onFormSwitch}) => {
    },[])
 
      
-   useEffect(() => {
-    {
-        k.map((i) => {
-            if (i.name === electionId){
-                setcan(i.candidates)
-            }
-        })
-        }
-   })
+   
 
    useEffect(() => {
     const pastvote = JSON.parse(localStorage.getItem("vote", vote))

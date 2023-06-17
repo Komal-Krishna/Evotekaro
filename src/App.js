@@ -46,7 +46,7 @@ function App() {
     return <Conduct onFormSwitch={toggleForm} />;
   } 
   else if (currentForm === "P") {
-    return <Past onFormSwitch={toggleForm} />;
+    return <Past onFormSwitch={toggleForm}  setElectionId={setElectionId}/>;
   }
   else if (currentForm === "Vote") {
     return <Vote onFormSwitch={toggleForm} setElectionId={setElectionId}/>;

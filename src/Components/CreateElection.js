@@ -12,6 +12,8 @@ function CreateElection({title,rule,onFormSwitch,setElectionId}) {
         setElectionId(title)
         onFormSwitch("Voting")
     }
+
+
     
     return(
         <div className="com" onClick={vote}>

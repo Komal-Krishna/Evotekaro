@@ -2,7 +2,6 @@ import React,{useState} from "react";
 import jwt_decode from "jwt-decode";
 
 import "../App.css"
-import { User } from "./User";
 
 export const Login = (props) => {
 
@@ -26,7 +25,8 @@ export const Login = (props) => {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: loginData
-        }).then(response => {
+        })
+        .then(response => {
             if (!response.ok) {
                 throw new Error('Login request failed');
             }

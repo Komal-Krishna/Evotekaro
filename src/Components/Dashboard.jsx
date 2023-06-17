@@ -6,20 +6,13 @@ import "./CSS/Dashboard.css";
 import Sidebar from './Sidebar';
 
 
+
  
 export const Dashboard = ({onFormSwitch,setElectionId}) => {
 
    const [d,setd] = useState([])
-   const current = new Date();
-   const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
-   const showTime = current.getHours()
-        + ':' + current.getMinutes()
-        + ":" + current.getSeconds();
-
-
    
-   
-   useEffect(() => {
+    useEffect(() => {
       fetch('http://localhost:8000/election', {
       method: 'GET',
       headers: {
@@ -43,10 +36,6 @@ export const Dashboard = ({onFormSwitch,setElectionId}) => {
        });
    },[])
 
-   {
-      console.log(date)
-      console.log(showTime);
-   }
 
       
 
@@ -59,10 +48,10 @@ export const Dashboard = ({onFormSwitch,setElectionId}) => {
             <p className="heading"><center>E VOTEKARO</center></p>
             
             <div className="cards">
+            
             {
             d.map((item) => 
-
-            (<CreateElection title={item.name} rule={item.rules}  onFormSwitch={onFormSwitch} setElectionId={setElectionId} ></CreateElection>))
+             <CreateElection title={item.name} rule={item.rules}  onFormSwitch={onFormSwitch} setElectionId={setElectionId} ></CreateElection>)
             }
             
             </div>
