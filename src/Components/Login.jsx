@@ -25,8 +25,7 @@ export const Login = (props) => {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: loginData
-        })
-        .then(response => {
+        }).then(response => {
             if (!response.ok) {
                 throw new Error('Login request failed');
             }
