@@ -10,15 +10,16 @@ export const Voting = ({electionId ,onFormSwitch}) => {
     const [k,setk] = useState([])
     const [can,setcan] = useState([])
     const [vote,setVote] = useState(false)
-    const [candid,setcandid] = useState("")
-    const [useri,setUseri] = useState("")
-    const [ei,setEi] = useState("")
+    const [candid,setcandid] = useState(0)
+    const [useri,setUseri] = useState(0)
+    const [ei,setEi] = useState(0)
 
 
 
-    const voteHandler = (id) => {
+    const voteHandler = (id,electionId) => {
         setVote(true);
         setcandid(id);
+        setEi(electionId);
     }
 
     const submitHandler = (e) => {
@@ -26,32 +27,25 @@ export const Voting = ({electionId ,onFormSwitch}) => {
         console.log(candid)
         console.log(ei)
 
-        const [voteData, setVoteData] = [{
+        axios.post('http://localhost:8000/votes', {
+            "id": 1,
             "userId" : useri,
             "electionId" : ei,
             "candidateId" : candid,
-        }]
-
-        axios.post('http://localhost:8000/votes', voteData, {
+        }, {
             headers: {
               'Content-Type': 'application/json',
               Authorization: localStorage.getItem('SavedToken')
             }
           })
-          .then(response => {
+        .then(response => {
             console.log('Voted successfully:', response.data);
             alert('Voted successfully');
-          })
-          .catch(error => {
+        })
+        .catch(error => {
             console.log('Vote error:', error.message);
             alert('Already Voted');
-          });
-        {
-            if (candid !== ""){
-                onFormSwitch("Dashboard");
-            }
-        }
-
+        });
     }
 
 
@@ -59,10 +53,8 @@ export const Voting = ({electionId ,onFormSwitch}) => {
             k.map((i) => {
                 if (i.name === electionId){
                     setcan(i.candidates)
-
                 }
             })
-            setEi(can.electionId)
        })
    
    
@@ -73,23 +65,23 @@ export const Voting = ({electionId ,onFormSwitch}) => {
           'Content-Type': 'application/json',
           'Authorization': localStorage.getItem('SavedToken')
         }})
-     .then(response => {
-         if (!response.ok) {
-             throw new Error('request failed');
-         }
-         return response.json();
-     })
-         .then(data => {
-           // react componants here
-           console.log(data)
-           setk(data);
-           const token = jwt_decode(localStorage.getItem('SavedToken'));
-           setUseri(token.userId); 
-  
-         })
-         .catch(error => {
-             console.log("Error", error);
-         });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('request failed');
+            }
+            return response.json();
+        })
+            .then(data => {
+              // react componants here
+              console.log(data)
+              setk(data);
+              const token = jwt_decode(localStorage.getItem('SavedToken'));
+              setUseri(token.userId);
+     
+            })
+            .catch(error => {
+                console.log("Error", error);
+            }); 
      },[])
 
   
@@ -121,7 +113,7 @@ export const Voting = ({electionId ,onFormSwitch}) => {
             return(
                 <div className="candid">
                     <div className="name">{i.name}
-                    <button className={ (candid === i.id) ? "votebut" : "votebu"} onClick={(id) => voteHandler(i.id)} >{ (candid === i.id) ? "Voted" : "Vote"}</button>
+                    <button className={ (candid === i.id) ? "votebut" : "votebu"} onClick={(id) => voteHandler(i.id,i.electionId)} >{ (candid === i.id) ? "Voted" : "Vote"}</button>
                     </div>
                 </div>
             );

@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import { nanoid } from "nanoid";
 import ReadOnlyRow from "./ReadOnlyRow";
 import EditableRow from "./EditableRow";
-import { v4 as uuid } from 'uuid';
+//import { v4 as uuid } from 'uuid';
 import Side from "./Side";
 import "./CSS/U.css"
 
@@ -89,10 +89,10 @@ export const U = ({onFormSwitch}) => {
       id: nanoid(),
       name: addFormData.name,
       email: addFormData.email ,
-      password: uuid(),
+      password: "pass",
       department: addFormData.department === "bcs" || addFormData.department === "bec" || addFormData.department === "bcy" || addFormData.department==="bcd" ? addFormData.department : alert("Wrong department input"),
       batch: addFormData.batch >= 2019 ? addFormData.batch : alert("Wrong batch input"),
-      isAdmin:"True"  
+      isAdmin:"False"  
     };
     
   let response;
@@ -141,7 +141,7 @@ export const U = ({onFormSwitch}) => {
       batch: editFormData.batch >= 2019 ? editFormData.batch : null,
       department: editFormData.department === "bcs" || editFormData.department === "bec" || editFormData.department === "bcy" || editFormData.department==="bcd" ? editFormData.department : alert("Wrong department input"),
       email: editFormData.email,
-      isAdmin:"True"
+      isAdmin:"False"
     };
   
     try {

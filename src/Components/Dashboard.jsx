@@ -48,10 +48,10 @@ export const Dashboard = ({onFormSwitch,setElectionId}) => {
             <p className="heading"><center>E VOTEKARO</center></p>
             
             <div className="cards">
-            
+           
             {
             d.map((item) => 
-             <CreateElection title={item.name} rule={item.rules}  onFormSwitch={onFormSwitch} setElectionId={setElectionId} ></CreateElection>)
+             <CreateElection title={item.name} rule={item.rules}  onFormSwitch={onFormSwitch} setElectionId={setElectionId} start={item.startTime} end={item.endTime}></CreateElection>)
             }
             
             </div>

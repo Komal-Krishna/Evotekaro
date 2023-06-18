@@ -47,7 +47,7 @@ export const Vote = ({onFormSwitch,setElectionId}) => {
             {
          d.map((item) => 
          {if ((currentDateTime > item.startTime) && (currentDateTime < item.endTime)){
-          return <CreateElection title={item.name} rule={item.rules}  onFormSwitch={onFormSwitch} setElectionId={setElectionId} ></CreateElection>
+          return <CreateElection title={item.name} rule={item.rules}  onFormSwitch={onFormSwitch} setElectionId={setElectionId} start={item.startTime} end={item.endTime}></CreateElection>
         }
           })
         }

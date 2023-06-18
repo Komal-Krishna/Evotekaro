@@ -10,12 +10,21 @@ import axios, { Axios } from "axios";
 function Conduct({onFormSwitch}) {
 
   const [value, setValue] = useState([]);
-  const [showDescription, setShowDescription] = useState(false);
   const [state, setState] = useState({});
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [candidate, setCandidate] = useState([]);
+  const [countID, setCountID] = useState(1);
 
+  const handleUniquKeyClick = () => {
+    setCountID((prevCount) => prevCount + 1);
+  }
+
+  const handleCandidateDelete = (id) => {
+    setCandidate((prevData) => prevData.filter(item => item.id !== id));
+    console.log("candidate:")
+    console.log(candidate)
+  }
 
   const handleStartTimeChange = (e) => {
     setStartTime(e.target.value);
@@ -25,23 +34,12 @@ function Conduct({onFormSwitch}) {
     setEndTime(e.target.value);
   };
 
-
-  const AddBox = () => {
-    setValue([...value, '']);
-    console.log(value)
-  };
-
-  const removeBox = (i) => {
-    const restValue = [...value];
-    restValue.splice(i, 1);
-    setValue(restValue);
-  };
-
   const handleChange = (e, i) => {
     const { name, value } = e.target;
+    handleUniquKeyClick()
     setState((prevState) => ({
       ...prevState,
-      "id": 1,
+      "id": countID,
       [name]: value,
       "electionId": 1,
     }));
@@ -49,13 +47,9 @@ function Conduct({onFormSwitch}) {
 
 
   const confirmChange = (e, i) => {
-    console.log("Inside confirmChange")
+    e.preventDefault();
     setCandidate([...candidate, state]);
-    setState({ id: 1,name:"",electionId:1, manifesto:""});
-    console.log("candidate:")
-    console.log(candidate)
-    console.log("state:")
-    console.log(state)
+    setState({ id: 1, name: "", electionId: 1, manifesto: "" });
   };
 
   var url = "http://127.0.0.1:8000/election/"
@@ -76,7 +70,6 @@ function Conduct({onFormSwitch}) {
     endTime: ""
   })
   const { register, handleSubmit, formState: { errors } } = useForm();
-
   const onSubmit = (data) => {
     if (startTime && endTime) {
       const formattedStartTime = new Date(startTime).toISOString();
@@ -88,8 +81,12 @@ function Conduct({onFormSwitch}) {
         startTime: formattedStartTime,
         endTime: formattedEndTime,
         rules: data.rules,
-        candidates:  candidate 
-        
+        year: data.year,
+        branch: data.branch,
+        batch: data.batch,
+        candidates: candidate
+
+
       },
         { headers })
         .then(res => {
@@ -100,18 +97,6 @@ function Conduct({onFormSwitch}) {
         })
     }
   }
-
-  const [photo, setPhoto] = useState(null);
-
-
-  const handlePhotoChange = (e) => {
-    const file = e.target.files[0];
-    setPhoto(file);
-  };
-
-  const toggleDescription = () => {
-    setShowDescription(!showDescription);
-  };
 
 
   return (
@@ -134,23 +119,36 @@ function Conduct({onFormSwitch}) {
             <div className="input-grp2">
               {" "}
               <label className="Head1">Year : </label>
-              <select name="year" >
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
+              <select name="year" {...register("year")}>
+                <option value="all" >ALL</option>
+                <option value="option2020">2020</option>
+                <option value="option2021">2021</option>
+                <option value="option2022">2022</option>
+                <option value="option2023">2023</option>
               </select>
             </div>
 
             <div className="input-grp2">
               {" "}
               <label className="Head1">Branch : </label>
-              <input className="tm1" type="text" name="branch" />
+              <select name="branch" {...register("branch")}>
+                <option value="all" >ALL</option>
+                <option value="CSE">CSE</option>
+                <option value="CSY">CSY</option>
+                <option value="ECE">ECE</option>
+                <option value="DS/AI">DS/AI</option>
+              </select>
             </div>
             <div className="input-grp2">
               {" "}
               <label className="Head1">Batch : </label>
-              <input className="tm1" type="text" name="batch" />
+              <select name="batch" {...register("batch")}>
+                <option value="all" >ALL</option>
+                <option value="batch1">1</option>
+                <option value="batch2">2</option>
+                <option value="batch3">3</option>
+
+              </select>
             </div>
           </div>
 
@@ -158,66 +156,47 @@ function Conduct({onFormSwitch}) {
             <label className="Head1">Add Candidates:</label>
             <div className="allBox">
               <div className="first-candi">
-                
                 <input className="tm1" type="text" name="name" value={state.name || ''} onChange={(e) => handleChange(e, 0)} />
                 <input className="tm1" type="text" name="manifesto" value={state.manifesto || ''} onChange={(e) => handleChange(e, 0)} />
 
-                
+
                 <button onClick={(e) => confirmChange(e, 0)}>Confirm</button>
 
               </div>
-
-              {value.map((data, i) => {
-                if (i !== 0) {
-                  return (
-                    <div className="other-candi" key={i}>
-                      
-                      <input
-                        className="tm1"
-                        type="text"
-                        name={`name-${i}`}
-                        value={state[`name-${i}`] || ''}
-                        onChange={(e) => handleChange(e, i)}
-                      />
-                      <input
-                        className="tm1"
-                        type="text"
-                        name={`manifesto-${i}`}
-                        value={state[`manifesto-${i}`] || ''}
-                        onChange={(e) => handleChange(e, i)}
-                      />
-
-                     
-                      <button onClick={() => removeBox(i)}>X</button>
-                      <button onClick={(e) => confirmChange(e, i)}>Confirm</button>
-                    </div>
-                  );
-                }
-
-              })}
-              <button className="add-more" onClick={AddBox} name="Add" type="submit">
-                Add More
-              </button>
+              <div className="displayCandi">
+                <ul>
+                  {candidate.map((item) => (
+                    <li key={item.id}>{item.name}:{item.manifesto}
+                      <button onClick={() => handleCandidateDelete(item.id)}>Delete</button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
-
           <div className="textarea">
             <label className="Head1">Rules and regulations:</label>
             <textarea name="rules" id="rules" cols="100" rows="10" {...register("rules", { maxLength: 20 })}></textarea>
           </div>
-
-
+          <div>
+          <div className="Stime">
             <div className="Stime2">
               <label className="Head1">Start time/Date:  </label>
               <input className="tm2" type="datetime-local" value={startTime} onChange={handleStartTimeChange} />
             </div>
+            </div>
+            <div>
             <div className="Stime2">
               <label className="Head1">End Time/Date:  </label>
               <input className="tm2" type="datetime-local" value={endTime} onChange={handleEndTimeChange} />
             </div>
+          </div>
+          </div>
+
+
           <button className="btn">Submit</button>
         </form>
-      </div>
+      </div >
       </div>
       </div>
   );
