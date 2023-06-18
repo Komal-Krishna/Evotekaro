@@ -15,7 +15,7 @@ import { ReactComponent as Logout } from './CSS/images/logout.svg'
            <div className='title'>Home</div>
        </li>
        
-       <li className='row' onClick={() => change('')} >
+       <li className='row' onClick={() => change('U')} >
            {""}
            <div className='icon' ><Vote/></div> {""}
            <div className='title'>User</div>

@@ -2,15 +2,56 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import "./CSS/Voting.css";
+import jwt_decode from "jwt-decode";
+import axios from 'axios';
 
 export const Voting = ({electionId ,onFormSwitch}) => {
 
     const [k,setk] = useState([])
     const [can,setcan] = useState([])
     const [vote,setVote] = useState(false)
+    const [candid,setcandid] = useState("")
+    const [useri,setUseri] = useState("")
+    const [ei,setEi] = useState("")
 
-    const submitHandler = () => {
+
+
+    const voteHandler = (id) => {
         setVote(true);
+        setcandid(id);
+    }
+
+    const submitHandler = (e) => {
+        console.log(useri)
+        console.log(candid)
+        console.log(ei)
+
+        const [voteData, setVoteData] = [{
+            "userId" : useri,
+            "electionId" : ei,
+            "candidateId" : candid,
+        }]
+
+        axios.post('http://localhost:8000/votes', voteData, {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: localStorage.getItem('SavedToken')
+            }
+          })
+          .then(response => {
+            console.log('Voted successfully:', response.data);
+            alert('Voted successfully');
+          })
+          .catch(error => {
+            console.log('Vote error:', error.message);
+            alert('Already Voted');
+          });
+        {
+            if (candid !== ""){
+                onFormSwitch("Dashboard");
+            }
+        }
+
     }
 
 
@@ -21,36 +62,37 @@ export const Voting = ({electionId ,onFormSwitch}) => {
 
                 }
             })
+            setEi(can.electionId)
        })
    
    
-   useEffect(() => {
-      fetch('http://localhost:8000/election', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': localStorage.getItem('SavedToken')
-      }})
-   .then(response => {
-       if (!response.ok) {
-           throw new Error('request failed');
-       }
-       return response.json();
-   })
-       .then(data => {
-         // react componants here
-         console.log(data)
-         setk(data);
+       useEffect(() => {
+        fetch('http://localhost:8000/election', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('SavedToken')
+        }})
+     .then(response => {
+         if (!response.ok) {
+             throw new Error('request failed');
+         }
+         return response.json();
+     })
+         .then(data => {
+           // react componants here
+           console.log(data)
+           setk(data);
+           const token = jwt_decode(localStorage.getItem('SavedToken'));
+           setUseri(token.userId); 
+  
+         })
+         .catch(error => {
+             console.log("Error", error);
+         });
+     },[])
 
-       })
-       .catch(error => {
-           console.log("Error", error);
-       });
-
-       
-
-   },[])
-
+  
      
    
 
@@ -61,7 +103,7 @@ export const Voting = ({electionId ,onFormSwitch}) => {
 
    useEffect(() => {
     localStorage.setItem("vote", vote)
-   },[vote])
+   },[])
 
    
     return(
@@ -79,15 +121,15 @@ export const Voting = ({electionId ,onFormSwitch}) => {
             return(
                 <div className="candid">
                     <div className="name">{i.name}
-                    <button className="votebut" >{ vote ? "Voted" : "Vote"}</button>
+                    <button className={ (candid === i.id) ? "votebut" : "votebu"} onClick={(id) => voteHandler(i.id)} >{ (candid === i.id) ? "Voted" : "Vote"}</button>
                     </div>
-                    
                 </div>
             );
             })
             }
             </div>
-        <div> <button className="sub" onClick={submitHandler} >Submit</button> </div>
+        <div> 
+            <button type="button" className="sub" onClick={submitHandler}>Submit</button> </div>
         </div>
         </>
 

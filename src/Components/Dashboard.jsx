@@ -16,7 +16,7 @@ export const Dashboard = ({onFormSwitch,setElectionId}) => {
       fetch('http://localhost:8000/election', {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
+         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('SavedToken')
       }})
    .then(response => {

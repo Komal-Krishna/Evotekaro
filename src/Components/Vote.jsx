@@ -8,11 +8,7 @@ import moment from "moment";
 export const Vote = ({onFormSwitch,setElectionId}) => {
   const [d,setd] = useState([])
    
-  const current = new Date();
-   const date = `${current.getFullYear()}-${current.getMonth()}-${current.getDate()}`;
-   const time = current.getHours()
-        + ':' + current.getMinutes()
-        + ":" + current.getSeconds();
+  const currentDateTime = new Date().toISOString();
 
   useEffect(() => {
      fetch('http://localhost:8000/election', {
@@ -50,7 +46,7 @@ export const Vote = ({onFormSwitch,setElectionId}) => {
             
             {
          d.map((item) => 
-         {if (date < moment(item.endTime).format('YYYY-MM-DD') && date > moment(item.startTime).format('YYYY-MM-DD')){
+         {if ((currentDateTime > item.startTime) && (currentDateTime < item.endTime)){
           return <CreateElection title={item.name} rule={item.rules}  onFormSwitch={onFormSwitch} setElectionId={setElectionId} ></CreateElection>
         }
           })

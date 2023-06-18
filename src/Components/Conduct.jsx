@@ -101,8 +101,6 @@ function Conduct({onFormSwitch}) {
     }
   }
 
-
-
   const [photo, setPhoto] = useState(null);
 
 
@@ -111,14 +109,11 @@ function Conduct({onFormSwitch}) {
     setPhoto(file);
   };
 
-
-  // const [showDescription, setShowDescription] = useState(false);
-
   const toggleDescription = () => {
     setShowDescription(!showDescription);
   };
 
-  //const { register, handleSubmit, formState: { errors } } = useForm();
+
   return (
     <div className='A'>
          <div className='side'>
@@ -133,8 +128,6 @@ function Conduct({onFormSwitch}) {
               <input className="tm1" type="text" name="electionName" {...register("electionName", { maxLength: 20 })} />
             </div>
             <div className="name-election">
-              {/* <label className="Head1">Date : </label> */}
-              {/* <input className="tm1" type="date" name="date" /> */}
             </div>
           </div>
           <div className="YBB">
@@ -165,8 +158,7 @@ function Conduct({onFormSwitch}) {
             <label className="Head1">Add Candidates:</label>
             <div className="allBox">
               <div className="first-candi">
-                {/* <input className="tm1" type="text" onChange={(e) => handleChange(e, 0)} />
-                <input className="tm1" type="text" name="manifesto" /> */}
+                
                 <input className="tm1" type="text" name="name" value={state.name || ''} onChange={(e) => handleChange(e, 0)} />
                 <input className="tm1" type="text" name="manifesto" value={state.manifesto || ''} onChange={(e) => handleChange(e, 0)} />
 
@@ -179,9 +171,7 @@ function Conduct({onFormSwitch}) {
                 if (i !== 0) {
                   return (
                     <div className="other-candi" key={i}>
-                      {/* <input className="tm1" value={data} type="text" onChange={(e) => handleChange(e, i)} name="candidate" />
-                      <input className="tm1" type="text" name="manifesto" /> */}
-                      {/* <input className="tm1" type="text" name="candiadateName" value={state.candiadateName || ''} onChange={(e) => handleChange(e, i)} /> */}
+                      
                       <input
                         className="tm1"
                         type="text"
@@ -197,7 +187,7 @@ function Conduct({onFormSwitch}) {
                         onChange={(e) => handleChange(e, i)}
                       />
 
-                      {/* <input className="tm1" type="text" name="candidateManifesto" value={state.candidateManifesto || ''} onChange={(e) => handleChange(e, i)}/> */}
+                     
                       <button onClick={() => removeBox(i)}>X</button>
                       <button onClick={(e) => confirmChange(e, i)}>Confirm</button>
                     </div>
@@ -225,12 +215,9 @@ function Conduct({onFormSwitch}) {
               <label className="Head1">End Time/Date:  </label>
               <input className="tm2" type="datetime-local" value={endTime} onChange={handleEndTimeChange} />
             </div>
-
-
-
           <button className="btn">Submit</button>
         </form>
-      </div >
+      </div>
       </div>
       </div>
   );

@@ -10,15 +10,7 @@ export const Past = ({onFormSwitch,setElectionId}) => {
 
   const [d,setd] = useState([])
 
-  const current = new Date();
-  const date = `${current.getFullYear()}-${current.getMonth()}-${current.getDate()}`;
-  const time = current.getHours()
-       + ':' + current.getMinutes()
-       + ":" + current.getSeconds();
-
-  
-
-  
+  const currentDateTime = new Date().toISOString();
 
   useEffect(() => {
     fetch('http://localhost:8000/election', {
@@ -58,11 +50,8 @@ export const Past = ({onFormSwitch,setElectionId}) => {
          
          {
          d.map((item) => 
-         {if (date.isBefore(moment(item.endTime).format('YYYY-MM-DD')) ){
+         {if (currentDateTime > item.endTime){
           return <CreateElection title={item.name} rule={item.rules}  onFormSwitch={onFormSwitch} setElectionId={setElectionId} ></CreateElection>
-        }
-        else {
-          console.log(date + moment(item.endTime).format('YYYY-MM-DD') )
         }
           })
         }

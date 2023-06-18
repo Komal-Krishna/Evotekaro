@@ -12,9 +12,11 @@ export const Login = (props) => {
     const handleClick = (e) => {
         e.preventDefault()
         console.log("clicked")
+
         const loginData = new URLSearchParams();
         loginData.append('username', username);
         loginData.append('password', password);
+        
 
 
         fetch('http://localhost:8000/login', {
@@ -67,12 +69,12 @@ export const Login = (props) => {
             <div className="Box2">
                 <div className="auth-form-container">
                     <form className="login-form">
-                    <input  type="name" placeholder="NAME" id="name" name="name" />
+                    <input className="input" type="name" placeholder="NAME" id="name" name="name" />
                         <br></br>
-                        <input  type="email" id="username" required value={username}
+                        <input className="input" type="email" id="username" required value={username}
                 onChange={(e) => (setUsername(e.target.value))} placeholder="EMAIL ADDRESS"  name="email" />
                         <br></br>
-                        <input  type="password" placeholder="PASSWORD" id="password" name="password"  required value={password}
+                        <input className="input" type="password" placeholder="PASSWORD" id="password" name="password"  required value={password}
                         onChange={(e) => (setPassword(e.target.value))}/>
                         <br></br>
                         <br></br>

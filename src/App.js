@@ -11,6 +11,7 @@ import {Faq} from "./Components/Faq"
 import { User } from "./Components/User";
 import './App.css';
 import { Voting } from "./Components/Voting";
+import { U } from "./Components/u";
 
 
 function App() {
@@ -56,6 +57,9 @@ function App() {
   }
   else if (currentForm === "Voting") {
     return <Voting onFormSwitch={toggleForm} electionId={electionId}></Voting>
+  }
+  else if (currentForm === "U") {
+    return <U onFormSwitch={toggleForm}></U>
   }
 }
 

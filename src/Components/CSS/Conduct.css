@@ -246,13 +246,16 @@
     inline-size: 12rem;
     /* inline-size: 2rem; */
     font-size: large;
+    color: #181e1c;
   }
 
   .tm2{
     background: #bdb6b6;
     border-radius: 0.4rem;
     font-size: large;
+    color: black;
   }
+
 
   .Head1{
     font-style: italic;
