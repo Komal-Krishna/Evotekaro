@@ -3,8 +3,10 @@ import React from 'react';
 
 import { ReactComponent as Home } from './CSS/images/home.svg';
 import { ReactComponent as Vote } from './CSS/images/ongoing.svg';
+import { ReactComponent as Past } from './CSS/images/past.svg';
 import { ReactComponent as Q } from './CSS/images/faq.svg';
 import { ReactComponent as Logout } from './CSS/images/logout.svg'
+
 
  function Side({change}) {
   return (
@@ -14,7 +16,11 @@ import { ReactComponent as Logout } from './CSS/images/logout.svg'
            <div className='icon'><Home/></div> {""}
            <div className='title'>Home</div>
        </li>
-       
+       <li className='row' onClick={() => change('All')} >
+           {""}
+           <div className='icon' ><Past/></div> {""}
+           <div className='title'>All</div>
+       </li>
        <li className='row' onClick={() => change('U')} >
            {""}
            <div className='icon' ><Vote/></div> {""}

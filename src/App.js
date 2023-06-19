@@ -13,6 +13,7 @@ import './App.css';
 import { Voting } from "./Components/Voting";
 import { U } from "./Components/u";
 import { Results } from "./Components/Results";
+import { All } from "./Components/All";
 
 
 function App() {
@@ -66,6 +67,9 @@ function App() {
   }
   else if (currentForm === "Results") {
     return <Results onFormSwitch={toggleForm} electionId={electionId} eId={eId} ></Results>
+  }
+  else if (currentForm === "All") {
+    return <All onFormSwitch={toggleForm} setElectionId={setElectionId} seteId={seteId}></All>
   }
 }
 

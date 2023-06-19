@@ -35,9 +35,6 @@ useEffect(() => {
     },[])
 
 
-
-
-     
     return(
         <div>
         <div className="a">
@@ -45,7 +42,7 @@ useEffect(() => {
         </div>
         <div className="candidates">
             <div className="election-name">
-                {electionId} - Results 
+                {electionId} - Results {eId}
             </div>
             <div className="Voting">
             {
