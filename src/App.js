@@ -17,8 +17,10 @@ import { Results } from "./Components/Results";
 
 function App() {
   const [currentForm, setCurrrentForm] = useState("First");
-
   const [electionId,setElectionId] = useState("")
+  const [eId,seteId] = useState("")
+
+
 
 
   const toggleForm = (forName) => {
@@ -36,7 +38,7 @@ function App() {
     return <Forgot onFormSwitch={toggleForm} />;
   }
   else if (currentForm === "Dashboard") {
-    return <Dashboard onFormSwitch={toggleForm} setElectionId={setElectionId} />;
+    return <Dashboard onFormSwitch={toggleForm} setElectionId={setElectionId} seteId={seteId} />;
   }
   else if (currentForm === "Faq") {
     return <Faq onFormSwitch={toggleForm} />;
@@ -48,10 +50,10 @@ function App() {
     return <Conduct onFormSwitch={toggleForm} />;
   } 
   else if (currentForm === "P") {
-    return <Past onFormSwitch={toggleForm}  setElectionId={setElectionId}/>;
+    return <Past onFormSwitch={toggleForm}  setElectionId={setElectionId}seteId={seteId}/>;
   }
   else if (currentForm === "Vote") {
-    return <Vote onFormSwitch={toggleForm} setElectionId={setElectionId}/>;
+    return <Vote onFormSwitch={toggleForm} setElectionId={setElectionId}seteId={seteId}/>;
   }
   else if (currentForm === "User") {
     return <User onFormSwitch={toggleForm} ></User>
@@ -63,7 +65,7 @@ function App() {
     return <U onFormSwitch={toggleForm}></U>
   }
   else if (currentForm === "Results") {
-    return <Results onFormSwitch={toggleForm} electionId={electionId}></Results>
+    return <Results onFormSwitch={toggleForm} electionId={electionId} eId={eId} ></Results>
   }
 }
 

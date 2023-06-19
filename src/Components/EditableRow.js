@@ -21,12 +21,21 @@ const EditableRow = ({
         <input
           type="text"
           required="required"
-          placeholder="batch"
-          name="batch"
-          value={editFormData.batch}
+          placeholder="year"
+          name="year"
+          value={editFormData.year}
           onChange={handleEditFormChange}
         ></input>
       </td>
+      <input
+          type="text"
+          required="required"
+          placeholder="batch"
+          name="batch"
+          value={editFormData.year}
+          onChange={handleEditFormChange}
+        ></input>
+      <td></td>
       <td>
       <input
           type="text"

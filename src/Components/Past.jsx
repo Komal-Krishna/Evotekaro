@@ -4,13 +4,15 @@ import Sidebar from "./Sidebar";
 import CreateElection from "./CreateElection";
 import moment from "moment";
 import dateFormat from 'dateformat';
+import jwt_decode from "jwt-decode";
 
 
-export const Past = ({onFormSwitch,setElectionId}) => {
+export const Past = ({onFormSwitch,setElectionId,seteId}) => {
 
   const [d,setd] = useState([])
 
   const currentDateTime = new Date().toISOString();
+  const decoded = jwt_decode(localStorage.getItem('SavedToken'));
 
   useEffect(() => {
     fetch('http://localhost:8000/election', {
@@ -51,7 +53,39 @@ export const Past = ({onFormSwitch,setElectionId}) => {
          {
          d.map((item) => 
          {if (currentDateTime > item.endTime){
-          return <CreateElection title={item.name} rule={item.rules}  onFormSwitch={onFormSwitch} setElectionId={setElectionId} start = {item.startTime} end = {item.endTime}></CreateElection>
+          {if ((item.batch === "all") & (item.year === "all") & (item.branch === "all")  )
+        {
+           return <CreateElection title={item.name} rule={item.rules}  onFormSwitch={onFormSwitch} setElectionId={setElectionId} start={item.startTime} end={item.endTime}seteId={seteId} id={item.id}></CreateElection>
+        }
+        else if ((item.batch === "all") & (item.year === "all") & (item.branch === decoded.branch)  )
+        {
+           return <CreateElection title={item.name} rule={item.rules}  onFormSwitch={onFormSwitch} setElectionId={setElectionId} start={item.startTime} end={item.endTime}seteId={seteId} id={item.id}></CreateElection>
+        }
+        else if ((item.batch === "all") & (item.year === decoded.year) & (item.branch === "all")  )
+        {
+           return <CreateElection title={item.name} rule={item.rules}  onFormSwitch={onFormSwitch} setElectionId={setElectionId} start={item.startTime} end={item.endTime}seteId={seteId} id={item.id}></CreateElection>
+        }
+        else if ((item.batch === decoded.batch) & (item.year === "all") & (item.branch === "all")  )
+        {
+           return <CreateElection title={item.name} rule={item.rules}  onFormSwitch={onFormSwitch} setElectionId={setElectionId} start={item.startTime} end={item.endTime}seteId={seteId} id={item.id}></CreateElection>
+        }
+        else if ((item.batch === decoded.batch) & (item.year === decoded.year) & (item.branch === "all")  )
+        {
+           return <CreateElection title={item.name} rule={item.rules}  onFormSwitch={onFormSwitch} setElectionId={setElectionId} start={item.startTime} end={item.endTime}seteId={seteId} id={item.id}></CreateElection>
+        }
+        else if ((item.batch === "all") & (item.year === decoded.year) & (item.branch === decoded.branch)  )
+        {
+           return <CreateElection title={item.name} rule={item.rules}  onFormSwitch={onFormSwitch} setElectionId={setElectionId} start={item.startTime} end={item.endTime}seteId={seteId} id={item.id}></CreateElection>
+        }
+        else if ((item.batch === decoded.batch) & (item.year === "all") & (item.branch === decoded.branch)  )
+        {
+           return <CreateElection title={item.name} rule={item.rules}  onFormSwitch={onFormSwitch} setElectionId={setElectionId} start={item.startTime} end={item.endTime}seteId={seteId} id={item.id}></CreateElection>
+        }
+        else if ((item.batch === decoded.branch) & (item.year === decoded.year) & (item.branch === decoded.branch)  )
+        {
+           return <CreateElection title={item.name} rule={item.rules}  onFormSwitch={onFormSwitch} setElectionId={setElectionId} start={item.startTime} end={item.endTime}seteId={seteId} id={item.id}></CreateElection>
+        }
+     }
         }
           })
         }
@@ -61,3 +95,7 @@ export const Past = ({onFormSwitch,setElectionId}) => {
   
    )
 }
+
+
+
+

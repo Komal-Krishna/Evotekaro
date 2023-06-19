@@ -41,7 +41,16 @@
     background-color: none;
   }
   
-  
+  select{
+    border-radius: 10px;
+    border: none;
+    background-color: #ddd;
+    margin-inline: 3px;
+    padding: 5px;
+    font-size: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 60%;
+  } 
   
   
   .f * {

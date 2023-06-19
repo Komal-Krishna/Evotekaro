@@ -5,13 +5,14 @@ import "./CSS/Election.css";
 
 
 
-function CreateElection({title,rule,onFormSwitch,setElectionId,start,end}) {
+function CreateElection({title,rule,onFormSwitch,setElectionId,start,end,seteId,id}) {
     let r = rule
     const currentDateTime = new Date().toISOString();
 
     const vote = () => {
         console.log("clicked")
-        setElectionId(title)
+        setElectionId(title);
+        seteId(id);
         {if (currentDateTime > end){
             onFormSwitch("Results")
             console.log("Past")

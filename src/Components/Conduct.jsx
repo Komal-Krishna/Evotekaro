@@ -121,10 +121,10 @@ function Conduct({onFormSwitch}) {
               <label className="Head1">Year : </label>
               <select name="year" {...register("year")}>
                 <option value="all" >ALL</option>
-                <option value="option2020">2020</option>
-                <option value="option2021">2021</option>
-                <option value="option2022">2022</option>
-                <option value="option2023">2023</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
               </select>
             </div>
 
@@ -133,10 +133,10 @@ function Conduct({onFormSwitch}) {
               <label className="Head1">Branch : </label>
               <select name="branch" {...register("branch")}>
                 <option value="all" >ALL</option>
-                <option value="CSE">CSE</option>
-                <option value="CSY">CSY</option>
-                <option value="ECE">ECE</option>
-                <option value="DS/AI">DS/AI</option>
+                <option value="bcs">CSE</option>
+                <option value="bcy">CSY</option>
+                <option value="ece">ECE</option>
+                <option value="ai">DS/AI</option>
               </select>
             </div>
             <div className="input-grp2">
@@ -144,9 +144,9 @@ function Conduct({onFormSwitch}) {
               <label className="Head1">Batch : </label>
               <select name="batch" {...register("batch")}>
                 <option value="all" >ALL</option>
-                <option value="batch1">1</option>
-                <option value="batch2">2</option>
-                <option value="batch3">3</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
 
               </select>
             </div>
