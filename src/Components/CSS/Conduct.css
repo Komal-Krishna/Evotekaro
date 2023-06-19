@@ -253,6 +253,7 @@
     background: #bdb6b6;
     border-radius: 0.4rem;
     font-size: large;
+    width:fit-content;
     color: black;
   }
 

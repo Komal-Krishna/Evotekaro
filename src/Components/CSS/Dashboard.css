@@ -79,7 +79,7 @@
   float: right;
 }
 
-.heading
+.he
 {
   margin-top: 8%;
   font-style: Josefin Sans;
@@ -99,14 +99,17 @@
   border-radius: 7px;
   padding: 5px;
   padding-left: 10px;
-  margin-top: 30%;
+  margin-top: 40%;
   font-family: Josefin Sans;
+  margin-bottom: 10%;
+
 }
 
 .ab{
   color: #FFD369;
   padding-left: 10px;
-  margin-bottom: 0.5%;
+  margin-bottom: 2%;
+  
 }
 
 .cards{

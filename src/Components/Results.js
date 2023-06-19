@@ -7,6 +7,7 @@ import "./CSS/Voting.css";
 export const Results = ({electionId ,onFormSwitch,eId}) => {
 
     const [v,setv] = useState([])
+    // eslint-disable-next-line
     const [s,sets] = useState(eId)
     
 useEffect(() => {
@@ -42,15 +43,15 @@ useEffect(() => {
         </div>
         <div className="candidates">
             <div className="election-name">
-                {electionId} - Results {eId}
+                {electionId} - Results
             </div>
             <div className="Voting">
             {
             v.map((i) => {
                 return(
-                    <div className="candid">
-                        <div className="name">
-                            {i.candidateName} has secured {i.vote_count} 
+                    <div className="candid" style={{border: '2px black'}}>
+                        <div className="name" >
+                            {i.candidateName} has secured {i.vote_count} votes.
                         </div>
                     </div>
                 );

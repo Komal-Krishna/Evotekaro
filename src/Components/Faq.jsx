@@ -4,19 +4,44 @@ import Sidebar from './Sidebar';
 
 const faqData = [
     {
-      question: 'What is React?',
+      question: 'What is Evotekaro?',
       answer:
-        'React is a JavaScript library for building user interfaces. It allows developers to create reusable UI components and efficiently update and render components when the data changes.'
+        'Evotekaro is an online voting platform where you can vote for your  candidates with no hassle! You may vote for them from anywhere, be it your hostel room, academic block or from the mess.        '
     },
     {
-      question: 'What are the key features of React?',
+      question: 'Why should I use Evotekar',
       answer:
-        'Some key features of React include component-based architecture, virtual DOM for efficient rendering, JSX syntax for defining components, and React Native for building mobile apps.'
+        'Going to the ballots IRL just to put a piece of paper in a box is a waste of your time and energy. With Evotekaro as long as you have a steady internet connection, it is as simple as clicking the “Vote” button!        '
     },
     {
-      question: 'How do I install React?',
+      question: 'But is it safe?',
       answer:
-        'You can install React by using npm (Node Package Manager) or yarn. Open your terminal and run the following command: "npm install react" or "yarn add react".'
+        'Yes, online voting on our platform is highly secure. We prioritize the security and integrity of the voting process as we have stringent measures in place to protect your data and ensure that your vote remains anonymous and tamper-proof'
+    },
+    {
+      question: 'Can I vote multiple times?      ',
+      answer:
+        'Obviously not. Our platform strictly adheres to the one-person-one-vote principle. We have mechanisms in place to prevent multiple voting by the same individual, preventing manipulation of the results.        '
+    },
+    {
+      question: 'Is my vote really anonymous?',
+      answer:
+        'Your vote is encrypted and stored securely, and our system is designed to ensure the anonymity of each voter. No personally identifiable information is linked to your vote.        '
+    },
+    {
+      question: 'What if I encounter technical difficulties during the voting process?      ',
+      answer:
+        'We provide technical support to assist you throughout the voting process. If you encounter any difficulties, you can reach out to our support team via email, and we will promptly assist you in resolving any technical issues.        '
+    },
+    {
+      question: 'What if I encounter technical difficulties during the voting process?      ',
+      answer:
+        'We provide technical support to assist you throughout the voting process. If you encounter any difficulties, you can reach out to our support team via email, and we will promptly assist you in resolving any technical issues.        '
+    },
+    {
+      question: 'Can I change my vote after submitting it?      ',
+      answer:
+        'No, once your vote is submitted, it is final and cannot be changed. We advise you to review your choices carefully before submitting your vote.        '
     },
     // Add more FAQ items as needed
   ];

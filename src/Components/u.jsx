@@ -274,7 +274,9 @@ const handleEditFormSubmit = async (event) => {
 
       <h2>Add a Contact</h2>
       <form onSubmit={handleAddFormSubmit} >
+        <div>
         <input
+          className="in"
           type="text"
           name="name"
           required="required"
@@ -283,6 +285,7 @@ const handleEditFormSubmit = async (event) => {
         />
          <input
         type="text"
+        className="in"
         name="year"
         required="required"
         placeholder="year"
@@ -291,6 +294,7 @@ const handleEditFormSubmit = async (event) => {
 
         <input
           type="text"
+          className="in"
           name="department"
           required="required"
           placeholder="Department"
@@ -301,6 +305,7 @@ const handleEditFormSubmit = async (event) => {
           type="batch"
           name="batch"
           required="required"
+          className="in"
           placeholder="batch"
           onChange={handleAddFormChange}
         />
@@ -308,24 +313,26 @@ const handleEditFormSubmit = async (event) => {
        <input
           type="email"
           name="email"
+          className="in"
           required="required"
           placeholder="Email"
           onChange={handleAddFormChange}
         />
         <select
            name="isAdmin"
+           className="in"
+           placeholder="Select Admin"
           value={addFormData.isAdmin} // Set the selected value of the dropdown
           required="required"
           onChange={handleAddFormChange}
-          
         >
-          <option value="">Select Admin</option>
-          
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
+          <option  value="">Select Admin</option>
+          <option value="yes" >Yes</option>
+          <option value="no" >No</option>
         </select>
        
-        <button type="submit" >Add</button>
+        <button type="submit">Add</button>
+        </div>
       </form>
     </div> 
       </div>

@@ -2,14 +2,11 @@ import React,{useState} from "react";
 import "./CSS/Conduct.css"
 import Side from "./Side";
 import { useForm } from "react-hook-form";
-import axios, { Axios } from "axios";
-
-
+import axios from "axios"
 
 
 function Conduct({onFormSwitch}) {
 
-  const [value, setValue] = useState([]);
   const [state, setState] = useState({});
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");

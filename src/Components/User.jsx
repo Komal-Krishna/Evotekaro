@@ -116,8 +116,8 @@ export const User= ({onFormSwitch}) => {
          <Side change={onFormSwitch} ></Side>
         </div>
         <div className="cont">
-         <p className="heading"><center>E VOTEKARO {'('}Admin{")"} </center></p>
-        
+         <p className="he"><center>E VOTEKARO {'('}Admin{")"} </center></p>
+       
         <div className="c">
         <div className="t"><p style={{fontStyle:"Josefin Sans",}}><center>Total Number of voters</center></p></div>
             <div className="ti"><>{a.length}</></div> 

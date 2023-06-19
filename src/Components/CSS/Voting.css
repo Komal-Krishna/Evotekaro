@@ -17,18 +17,20 @@
 }
 
 .Voting{
-    background-color: lightgray;
     width: 56% ;
     padding: 16px;
     margin-top: 10%;
     border-radius: 13px;
     height: fit-content;
+    border: 3px solid black;
+    border-radius: 10px;
 
 
 }
 
 .candid{
     padding: 2%;
+    
 }
 
 .votebut{
@@ -44,8 +46,6 @@
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 }
-
-
 
 .votebu{
     float: right;
@@ -70,7 +70,8 @@
 
 .name{
     font-size: xx-large;
-    background-color: white;
+    background-color: lightgray;
+    border-radius: 10px;
     padding: 5px;
 
 

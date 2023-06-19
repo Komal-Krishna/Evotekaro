@@ -10,7 +10,7 @@ function ShowElection({title,batch,branch,year}) {
     return(
         <div className="com" >
             <div className="tit"><p >{title}</p></div>
-            <Popup trigger={<button className="but"><b>REQ</b></button>} position="right center" >
+            <Popup trigger={<button className="but"><b>REQ</b></button>} position="bottom center" >
             Year: {year}<br></br>
             Branch: {branch}<br></br>
             Batch: {batch}<br></br>

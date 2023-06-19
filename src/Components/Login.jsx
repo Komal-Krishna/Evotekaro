@@ -23,7 +23,7 @@ export const Login = (props) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-            
+                // eslint-disable-next-line
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: loginData
@@ -58,8 +58,8 @@ export const Login = (props) => {
     return (
         <div className="Login_background">
             <div className="box1">
-                <div className="heading">
-                    <p>Sign up</p>
+                <div className="head">
+                    <p>Sign IN</p>
                 </div>
                 <div className="para">
                     <p>Please enter your credentials provided by the IIITK management which are used for LMS</p>

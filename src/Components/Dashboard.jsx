@@ -49,7 +49,7 @@ export const Dashboard = ({onFormSwitch,setElectionId,seteId}) => {
          <Sidebar change={onFormSwitch} ></Sidebar>
         </div>
          <div className="v">
-            <p className="heading"><center>E VOTEKARO</center></p>
+            <p className="hea"><center>E VOTEKARO</center></p>
             
             <div className="cards">
            
@@ -99,7 +99,14 @@ export const Dashboard = ({onFormSwitch,setElectionId,seteId}) => {
          <div className="about">
             <p className="ab" >About :</p>
             
-            <p style={{color: "white"}}>More  than 290 people are killed and over 1,100 others injured in a collision between three trains in Balasore, India crash site pictured </p>
+            <p style={{color: "white",}}>Welcome to Evotekaro - your one-stop solution for online voting!<br></br><br></br>
+At Evotekaro, we believe in the power of democracy and the importance of giving every individual a voice. 
+With the rapid advancements in technology, we have developed a user-friendly web application that revolutionizes the way we vote. 
+Say goodbye to long queues and complicated paper ballots. 
+With Evotekaro, you can participate in elections and make your voice heard from the comfort of your own home, office, or anywhere with an internet connection.
+<br></br><br></br>
+Evotekaro - Voting made simple, secure, and accessible.
+</p>
          </div>
       </div>     
    )

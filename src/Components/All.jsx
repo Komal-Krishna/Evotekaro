@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import CreateElection from "./CreateElection";
 import "./CSS/Dashboard.css";
 import ShowElection from "./ShowElection";
 import Side from "./Side";

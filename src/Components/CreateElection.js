@@ -13,6 +13,7 @@ function CreateElection({title,rule,onFormSwitch,setElectionId,start,end,seteId,
         console.log("clicked")
         setElectionId(title);
         seteId(id);
+        // eslint-disable-next-line
         {if (currentDateTime > end){
             onFormSwitch("Results")
             console.log("Past")
@@ -28,7 +29,7 @@ function CreateElection({title,rule,onFormSwitch,setElectionId,start,end,seteId,
     return(
         <div className="com" onClick={vote}>
             <div className="tit"><p >{title}</p></div>
-            <Popup trigger={<button className="but"> Rules</button>} position="right center" >
+            <Popup trigger={<button className="but"> Rules</button>} position="botttom center" >
             {r}
             </Popup>
         </div>

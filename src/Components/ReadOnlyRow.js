@@ -18,13 +18,13 @@ const ReadOnlyRow = ({ contact,handleEditClick,handleDeleteClick }) => {
           type="button"
           onClick={(event) => handleEditClick(event, contact)}
         >
-        <img src ={pencil}  style={{ width: '15px', height: '15px' }}></img>
+        <img src ={pencil} alt="Edit" style={{ width: '15px', height: '15px' }}></img>
         </button>
         <button type="button" 
         
         onClick={() => handleDeleteClick(contact.id)}
         >
-          <img src ={bin} style={{ width: '20px', height: '15px' }}></img>
+          <img src ={bin} alt="Delete" style={{ width: '20px', height: '15px' }}></img>
           
         </button>
       </td>

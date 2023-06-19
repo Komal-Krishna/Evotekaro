@@ -55,6 +55,7 @@ export const Voting = ({electionId ,onFormSwitch}) => {
                     setcan(i.candidates)
                 }
             })
+            return
        })
    
    
