@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 
-export const Forgot = (props)=> {
+export const Forgot = ()=> {
+    const navigate = useNavigate();
     return(
         <div className="Login_background">
             <div className="box2">
@@ -19,7 +21,7 @@ export const Forgot = (props)=> {
                         <br>
                         </br>
                         
-                        <button class = "button reset" type="button" onClick={() => props.onFormSwitch('login')}><b>Reset</b></button>
+                        <button class = "button reset" type="button" onClick={() => navigate('/login')}><b>Reset</b></button>
                     </form>
                 </div>
             </div>

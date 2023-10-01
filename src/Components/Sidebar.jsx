@@ -1,45 +1,51 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-
-import { ReactComponent as Home } from './CSS/images/home.svg';
-import { ReactComponent as Past } from './CSS/images/past.svg';
-import { ReactComponent as Vote } from './CSS/images/ongoing.svg';
-import { ReactComponent as Q } from './CSS/images/faq.svg';
-import { ReactComponent as Logout } from './CSS/images/logout.svg'
-
- function Sidebar({change}) {
+ function Sidebar() {
+  const navigate = useNavigate();
   return (
-       <ul className='sidebarlist'>
-       <li className='row' onClick={() => change('Dashboard')}>
-           {""}
-           <div className='icon'><Home/></div> {""}
-           <div className='title'>Home</div>
-       </li>
-       
-       <li className='row' onClick={() => change('P')}>
-           {""}
-           <div className='icon' ><Past/></div> {""}
-           <div className='title'>Past</div>
-       </li>
-
-       <li className='row' onClick={() => change('Vote')} >
-           {""}
-           <div className='icon' ><Vote/></div> {""}
-           <div className='title'>Ongoing</div>
-       </li>
-
-       <li className='row' onClick={() => change('Faq')}>
-           {""}
-           <div className='icon'><Q/></div> {""}
-           <div className='title'>FAQ</div>
-       </li>
-
-       <li className='row' onClick={() => change('First')}>
-           {""}
-           <div className='icon'><Logout/></div> {""}
-           <div className='title'>Logout</div>
-       </li>            
-       </ul>
+    <div className="sidebar">
+    <div className="logo_details">
+      <div className="logo_name">E VoteKaro</div>
+    </div>
+    <ul className="nav-list">
+      <li onClick={() => navigate('/dashboard')}>
+        <a href="#">
+          <i className="bx bx-user"></i>
+          <span className="link_name">Home</span>
+        </a>
+        <span className="tooltip">Home</span>
+      </li>
+      <li onClick={() => navigate('/p')}>
+        <a href="#">
+          <i className="bx bx-chat"></i>
+          <span className="link_name">Past</span>
+        </a>
+        <span className="tooltip">Past</span>
+      </li>
+      <li onClick={() => navigate('/vote')}>
+        <a href="#">
+          <i className="bx bx-pie-chart-alt-2"></i>
+          <span className="link_name">Ongoing</span>
+        </a>
+        <span className="tooltip">Ongoing</span>
+      </li>
+      <li onClick={() => navigate('/faq')}>
+        <a href="#">
+          <i className="bx bx-folder"></i>
+          <span className="link_name">Help</span>
+        </a>
+        <span className="tooltip">Help</span>
+      </li>
+      <li class="profile" onClick={() => navigate('/')}>
+        <a href="#">
+        <i class="bx bx-log-out" id="log_out"></i>
+        <span className="link_name">Logout</span>
+        </a>
+        <span className="tooltip">Logout</span>
+      </li>
+    </ul>
+  </div>
 );
 }
 

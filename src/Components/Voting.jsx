@@ -5,7 +5,7 @@ import "./CSS/Voting.css";
 import jwt_decode from "jwt-decode";
 import axios from 'axios';
 
-export const Voting = ({electionId ,onFormSwitch}) => {
+export const Voting = ({electionId}) => {
 
     const [k,setk] = useState([])
     const [can,setcan] = useState([])
@@ -102,7 +102,7 @@ export const Voting = ({electionId ,onFormSwitch}) => {
     return(
         <>
         <div className="a">
-          <Sidebar change={onFormSwitch}></Sidebar>
+          <Sidebar></Sidebar>
         </div>
         <div className="candidates">
             <div className="election-name">

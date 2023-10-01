@@ -9,7 +9,7 @@ const faqData = [
         'Evotekaro is an online voting platform where you can vote for your  candidates with no hassle! You may vote for them from anywhere, be it your hostel room, academic block or from the mess.        '
     },
     {
-      question: 'Why should I use Evotekar',
+      question: 'Why should I use Evotekaro',
       answer:
         'Going to the ballots IRL just to put a piece of paper in a box is a waste of your time and energy. With Evotekaro as long as you have a steady internet connection, it is as simple as clicking the “Vote” button!        '
     },
@@ -47,7 +47,7 @@ const faqData = [
   ];
 
 
-export const Faq = ({onFormSwitch}) => {
+export const Faq = () => {
     const [expandedIndex, setExpandedIndex] = useState(null);
 
   const toggleAccordion = (index) => {
@@ -55,13 +55,13 @@ export const Faq = ({onFormSwitch}) => {
   };
 
   return (
-    <div className="A">
-        <div className="i">
-            <Sidebar change={onFormSwitch}></Sidebar>
+    <div className="bg-image">
+        <div className="side">
+            <Sidebar></Sidebar>
         </div>
-        <div className="no">
+        <div className="view-section">
             <div className="faq-container">
-            <div className="f"><h1>Frequently Asked Questions</h1></div>
+            <div className="sumo-text"><h1>Frequently Asked Questions</h1></div>
             {faqData.map((item, index) => (
                 <div
                 className={`faq-item ${expandedIndex === index ? 'expanded' : ''}`}

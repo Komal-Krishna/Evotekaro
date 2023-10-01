@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar";
 import "./CSS/Voting.css";
 
 
-export const Results = ({electionId ,onFormSwitch,eId}) => {
+export const Results = ({electionId,eId}) => {
 
     const [v,setv] = useState([])
     // eslint-disable-next-line
@@ -39,7 +39,7 @@ useEffect(() => {
     return(
         <div>
         <div className="a">
-          <Sidebar change={onFormSwitch}></Sidebar>
+          <Sidebar></Sidebar>
         </div>
         <div className="candidates">
             <div className="election-name">

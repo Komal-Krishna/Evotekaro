@@ -8,7 +8,7 @@ import Side from "./Side";
 
 
  
-export const All = ({onFormSwitch,setElectionId,seteId}) => {
+export const All = ({setElectionId,seteId}) => {
 
    const [d,setd] = useState([])
 
@@ -44,14 +44,16 @@ export const All = ({onFormSwitch,setElectionId,seteId}) => {
 
 
     return(
-      <div className='A'>
+      <div className='bg-image'>
          <div className='side'>
-         <Side change={onFormSwitch} ></Side>
+         <Side></Side>
         </div>
-         <div className="v">
-            <p ><center>E VOTEKARO</center></p>
+         <div className="view-section">
+            <div className="sumo-text">
+            <p>E VOTEKARO</p>
+            </div>
             
-            <div className="cards">
+            <div className="cards-list">
            
             {
             d.map((item) => {

@@ -1,14 +1,21 @@
 import React from 'react';
 import "./CSS/First.css"
+import { useNavigate, Link, useLocation } from "react-router-dom";
 
-export const First = (props) => {
+
+export const First = () => {
+        const navigate = useNavigate();
+        const clickHandler = (e) => {
+                e.preventDefault();
+                navigate('/login');
+        }
+
     return(
             <div className='bd'>
-                    <button className='btn' onClick={() => props.onFormSwitch('login')}>Sign up</button>
-                    <div className='contact'>Contact Us</div>
-                    <div className='home'>Home</div>
+                   
                     <div className='Heading'>
                     <h1>E VOTEKARO</h1>
+                    <button className='button-89'  onClick={clickHandler}>Sign up</button>
                     </div>
             </div>
         )

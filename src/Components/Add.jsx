@@ -1,23 +1,19 @@
 import React from "react"
-import "./CSS/Add.css";
 import { ReactComponent as Home } from './CSS/images/home.svg';
 import { ReactComponent as Past } from './CSS/images/past.svg';
 import { ReactComponent as Vote } from './CSS/images/ongoing.svg';
 import { ReactComponent as Q } from './CSS/images/faq.svg';
 import { ReactComponent as Logout } from './CSS/images/logout.svg'
+import { useNavigate } from "react-router-dom";
 
 
-export const Add = ({onFormSwitch}) => {
-
-    
-
-    
-
+export const Add = () => {
+    const navigate = useNavigate();
     return(
         <div className='App'>
          <div className='sidebar'>
             <ul className='sidebarlist'>
-            <li className='row' onClick={() => onFormSwitch('Dashboard')}>
+            <li className='row' onClick={() => navigate('/dashboard')}>
                 {""}
                 <div className='icon'><Home/></div> {""}
                 <div className='title'>Home</div>
@@ -25,23 +21,23 @@ export const Add = ({onFormSwitch}) => {
             
             <li className='row'>
                 {""}
-                <div className='icon' onClick={() => onFormSwitch('')}><Past/></div> {""}
+                <div className='icon' onClick={() => navigate('/p')}><Past/></div> {""}
                 <div className='title'>Past</div>
             </li>
 
             <li className='row'>
                 {""}
-                <div className='icon' onClick={() => onFormSwitch('Add')}><Vote/></div> {""}
+                <div className='icon' onClick={() => navigate('/add')}><Vote/></div> {""}
                 <div className='title'>Vote</div>
             </li>
 
-            <li className='row' onClick={() => onFormSwitch('Faq')}>
+            <li className='row' onClick={() => navigate('/faq')}>
                 {""}
                 <div className='icon'><Q/></div> {""}
                 <div className='title'>FAQ</div>
             </li>
 
-            <li className='row' onClick={() => onFormSwitch('First')}>
+            <li className='row' onClick={() => navigate('/')}>
                 {""}
                 <div className='icon'><Logout/></div> {""}
                 <div className='title'>Logout</div>
@@ -54,7 +50,7 @@ export const Add = ({onFormSwitch}) => {
                 <input type="text" name="title" placeholder="Election Name"  ></input>
                 <input type="text" name="rules" placeholder="Rules" ></input>
             </form>
-            <button  >ADD</button>
+            <button>ADD</button>
          </center>
          </div>
         </div>
